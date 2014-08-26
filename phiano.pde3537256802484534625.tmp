@@ -1,0 +1,50 @@
+void setup()
+{
+  orientation(LANDSCAPE);
+  background(255);
+  size(displayWidth/2+1,displayHeight/4);
+}
+int nok=20;
+class pian_key_white{
+  float x=0;
+  float y=0;
+  float wdth=displayWidth/(nok*2);
+  float hght=displayHeight/4;
+  pian_key_white()
+  {
+    x=0;
+   y=0; 
+  }
+  void drawme(float transx)
+  {
+    fill(255);
+    stroke(0);
+    rect(x+transx,y,wdth,hght-1,5,5,5,5);
+  }
+}
+class pian_key_black{
+  float x=displayWidth/(nok*2);
+  float y=0;
+  float wdth=displayWidth/(nok*2);
+  float hght=displayHeight/4;
+  pian_key_black()
+  {
+    x=0;
+   y=0; 
+  }
+  void drawme(float transx)
+  {
+    fill(0);
+    stroke(0);
+    rect(x+transx,y,wdth,(hght-1)/2,3,3,3,3);
+  }
+}
+pian_key_white pk[]=new pian_key_white[nok*2];
+void draw()
+{
+  for(int i=0;i<nok;i++)
+    {
+      pk[i]=new pian_key_white();
+      pk[i].drawme(float(i*displayWidth/(nok*2)));
+    }
+}

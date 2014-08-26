@@ -1,0 +1,64 @@
+int arx[][]=new int[displayWidth/2+1][displayHeight/4];
+int nok=21;
+class pian_key{
+   float x=0;
+  float y=0;
+  float wdth=displayWidth/(nok*2);
+  float hght=displayHeight/4;
+  pian_key()
+  {
+    x=0;
+   y=0; 
+  }
+}
+class pian_key_white extends pian_key{
+  float wdth=displayWidth/(nok*2);
+  float hght=displayHeight/4;
+  void drawme(float transx)
+  {
+    fill(255);
+    stroke(0);
+    rect(x+transx,y,wdth,hght-1,5,5,5,5);
+    for(int i=0;i<wdth;i++)
+    {
+      
+      
+    }
+  }
+}
+class pian_key_black extends pian_key{
+  float wdth=displayWidth/(nok*4);
+  float hght=displayHeight/4+displayHeight/16;
+  void drawme(float transx)
+  {
+    fill(0);
+    stroke(0);
+    rect(x+transx+wdth*3/2,y,wdth,(hght-1)/2,3,3,3,3);
+  }
+}
+pian_key_white pk[]=new pian_key_white[nok];
+pian_key_black bk[]=new pian_key_black[nok];
+
+void setup()
+{
+  orientation(LANDSCAPE);
+  background(255);
+  size(displayWidth/2+1,displayHeight/4);
+    for(int i=0;i<nok;i++)
+    {
+      pk[i]=new pian_key_white();
+      pk[i].drawme(float(i*displayWidth/(nok*2)));     
+    }
+
+  for(int i=0;i<nok-1;i++)
+    {
+      if(i%7!=2 && i%7!=6)
+     {bk[i]=new pian_key_black();
+     bk[i].drawme(float(i*displayWidth/(nok*2)));
+     }
+    }
+
+}
+void draw()
+{
+}
